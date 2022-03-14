@@ -1,0 +1,90 @@
+/*
+ * Santiago Aparicio Nallely Elizabeth
+ * 18161245
+ * Ingenieria en Sistemas Computacionales
+ * Cuarto Semestre
+ */
+package Club;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author Nallely Santiago
+ */
+public class PaletaColoresNAparicio {
+    
+    AdministradorAccion adm = new AdministradorAccion();
+    private JTextField txtR;
+    private JTextField txtV;
+    private JTextField txtA;
+    private JButton btnMostar;
+    private JPanel panelPintar;
+
+    public PaletaColoresNAparicio() {
+        JFrame frame = new JFrame();
+        frame.setTitle("Paleta de colores");
+        frame.setLayout(new GridLayout(0,2));
+        
+        txtR = new JTextField(12);
+        txtV = new JTextField(12);
+        txtA = new JTextField(12);
+        btnMostar = new JButton("Mostrar Color");
+        panelPintar = new JPanel();
+        panelPintar.setBackground(Color.red);
+        
+        btnMostar.addActionListener(adm);
+        
+        JPanel panelContenido = new JPanel(new FlowLayout());  
+        JPanel pp = new JPanel(new GridLayout(3,2));
+        pp.add(new JLabel("Rojo"));
+        pp.add(txtR);
+        pp.add(new JLabel("Verde"));
+        pp.add(txtV);
+        pp.add(new JLabel("Azul"));
+        pp.add(txtA);
+        
+        panelContenido.add(pp);
+        panelContenido.add(btnMostar);
+        
+        frame.add(panelContenido);
+        frame.add(panelPintar);
+        
+        frame.setSize(600,200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+    
+    private class AdministradorAccion implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(txtR.getText().isEmpty() || txtV.getText().isEmpty() || txtA.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Rellene todos los campos");
+            }else {
+                int r=Integer.parseInt(txtR.getText().trim());
+                int g=Integer.parseInt(txtV.getText().trim());
+                int b=Integer.parseInt(txtA.getText().trim());          
+                if((r<=255 && g<=255 && b<=255)&& (r>=0&& g>=0 && b>=0)){
+                    Color color = new Color(r,g,b);
+                    panelPintar.setBackground(color);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Fuera de Rango");
+                }
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        new PaletaColoresNAparicio();
+    }
+}
