@@ -1,0 +1,82 @@
+/*
+ * Gomez Romero Miguel Angel
+ * 19161282
+ * Ingenieria en Sistemas Computacionales
+ * Segundo Semestre
+ */
+package com.unidad5.formularioclub;
+import javax.swing.*;
+import java.awt.FlowLayout;
+/**
+ *
+ * @author Miguel Angel G_R
+ */
+public class formulario extends JFrame{
+    private JLabel nombre,apellidoPa,apellidoMa,direccion,estado,sexo;
+    private JPanel panel;
+    private JTextField tnombre,tapellidoPa,tapellidoMa,tdireccion,testado;
+    private JButton aceptar;
+    private JRadioButton sMu,sHo;
+    private JComboBox combo;
+    
+    public formulario() {
+        init();
+    }
+    private void init(){
+        panel = new JPanel();
+        setTitle("Formulario");
+        setSize(400, 200);
+        setLayout(new FlowLayout());
+        
+        nombre = new JLabel("Nombre:                ");
+        tnombre = new JTextField(25);
+        apellidoPa = new JLabel("Apellido Paterno:  ");
+        tapellidoPa = new JTextField(25);
+        apellidoMa = new JLabel("Apellido Materno:  ");
+        tapellidoMa = new JTextField(25);
+        direccion = new JLabel("Dirección:          ");
+        tdireccion = new JTextField(25);
+        estado = new JLabel("Estado");
+        combo = new JComboBox();
+        combo.addItem("Elige estado");
+        combo.addItem("Casado");
+        combo.addItem("Soltero");
+        combo.addItem("Viudo");
+        sexo = new JLabel("Sexo:");
+        ButtonGroup grupoBotones = new ButtonGroup();
+        sMu = new JRadioButton("Mujer");
+        grupoBotones.add(sMu);
+        sHo = new JRadioButton("Hombre");
+        grupoBotones.add(sHo);
+        aceptar = new JButton("Aceptar");
+        
+        this.add(nombre);
+        this.add(tnombre);
+        
+        this.add(apellidoPa);
+        this.add(tapellidoPa);
+        
+        this.add(apellidoMa);
+        this.add(tapellidoMa);
+        
+        this.add(direccion);
+        this.add(tdireccion);
+        
+        this.add(estado);
+        this.add(combo);
+        
+        this.add(sexo);
+        this.add(sMu);
+        this.add(sHo);
+        
+        this.add(aceptar);
+        
+        setVisible(true);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public static void main(String[] args) {
+        new formulario();
+    }
+}

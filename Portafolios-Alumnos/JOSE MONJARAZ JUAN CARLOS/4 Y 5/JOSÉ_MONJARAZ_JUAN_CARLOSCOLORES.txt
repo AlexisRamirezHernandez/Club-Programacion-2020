@@ -1,0 +1,86 @@
+/*
+ * José Monjaraz Juan Carlos
+ * 18161148
+ * Ingenieria en Sistemas Computacionales
+ * Cuarto Semestre
+ */
+package Club;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author Carlos Monjaraz
+ */
+public class ColoresJCJM extends JFrame{
+    admEvento adm = new admEvento();
+    private JTextField txtRojo;
+    private JTextField txtVerde;
+    private JTextField txtAzul;
+    private JButton btnPintar;
+    private JPanel panelPintar;
+
+    public ColoresJCJM() {
+        setTitle("");
+        setLayout(new GridLayout(2,0));
+        
+        JPanel panel = new JPanel(new FlowLayout());  
+        txtRojo = new JTextField(20);
+        txtVerde = new JTextField(20);
+        txtAzul = new JTextField(20);
+        panel.add(new JLabel("Rojo"));
+        panel.add(txtRojo);
+        panel.add(new JLabel("Verde"));
+        panel.add(txtVerde);
+        panel.add(new JLabel("Azul"));
+        panel.add(txtAzul);
+        JPanel boton = new JPanel();
+        btnPintar = new JButton("Pintar");
+        boton.add(btnPintar);
+        panel.add(btnPintar);
+        panelPintar = new JPanel();
+        panelPintar.setSize(300, 100);
+        panelPintar.setBackground(new Color(0,0,0));
+        add(panel);
+        add(panelPintar);
+        btnPintar.addActionListener(adm);
+              
+        setLocation(300,300);
+        setSize(300,250);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+    
+    private class admEvento implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(txtRojo.getText().isEmpty() || txtVerde.getText().isEmpty() || txtAzul.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Rellene todos los campos");
+            }else {
+                int r=Integer.parseInt(txtRojo.getText().trim());
+                int g=Integer.parseInt(txtVerde.getText().trim());
+                int b=Integer.parseInt(txtAzul.getText().trim());          
+                if((r<=255 && g<=255 && b<=255)&& (r>=0&& g>=0 && b>=0)){
+                    Color color = new Color(r,g,b);
+                    panelPintar.setBackground(color);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Fuera de Rango");
+                }
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        ColoresJCJM ObjColores = new ColoresJCJM();
+    }
+}

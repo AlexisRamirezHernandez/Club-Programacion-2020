@@ -1,0 +1,54 @@
+package Club;
+/*
+ * José Monjaraz Juan Carlos
+ * 18161148
+ * Ingenieria en Sistemas Computacionales
+ * Cuarto Semestre
+ */
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Carlos Monjaraz
+ */
+public class BotonesJCJM extends JFrame{
+    
+    AdmAction admAction = new AdmAction();
+    private JButton[] btnBotones = new JButton[9];
+
+    public BotonesJCJM() {
+        setTitle("");
+        setLayout(new GridLayout(3,3));
+        
+        for(int i=0;i<btnBotones.length;i++){
+            JButton btn =  new JButton(""+(i+1));
+            btn.addActionListener(admAction);
+            btnBotones[i] = btn;
+            add(btnBotones[i]);
+        }      
+        
+        setLocation(300,300);
+        setSize(300,300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+    
+    public static void main(String[] args) {
+        BotonesJCJM objBotones =  new BotonesJCJM();
+    }
+    
+    private class AdmAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for(int i=0;i<btnBotones.length;i++){
+                if (e.getSource() == btnBotones[i])JOptionPane.showMessageDialog(null,""+btnBotones[i].getText());
+            }
+        }
+    }
+}
