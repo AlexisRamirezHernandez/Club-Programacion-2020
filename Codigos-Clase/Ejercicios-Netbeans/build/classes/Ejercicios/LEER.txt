@@ -1,0 +1,9 @@
+Hoy nos tocaba ver:
+Distribucion nula y los componentes 
+JList y JSlider
+vienen unas pequeñas aplicaciones de como usarlas aparte viene un codigo extra
+donde vienen unos nuevos componentes por si gustan checarlo
+el JProgressBar, solo leanlos cuando puedan y ya.
+La siguiente semana se veran eventos de raton y teclado 
+el 8 de mayo se les va enseñar como enlazar sus clases de POO con sus interfaces graficas
+y vean el sentido que tiene.
